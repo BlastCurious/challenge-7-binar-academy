@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">challenge_4_ilyasa_adam_naufal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hai_ilyasa">Hai, Ilyasa</string>
+    <string name="discount_picture">DISCOUNT PICTURE</string>
+    <string name="promo_banner">PROMO BANNER</string>
+    <string name="list_menu_makanan">List Menu Makanan</string>
+    <string name="mau_makan_apa_hari_ini">Mau makan apa hari ini?</string>
+    <string name="discount_banner">DISCOUNT BANNER</string>
+    <string name="pesan_makanan_dengan_aplikasi_dan_dapatkan_diskonmu">Pesan makanan dengan aplikasi dan dapatkan diskonmu</string>
+    <string name="diskon_30">Diskon 30%</string>
+    <string name="todo">TODO</string>
+    <string name="price">Price</string>
+    <string name="title">Title</string>
+    <string name="profile">Profile</string>
+    <string name="username">Username</string>
+    <string name="_62_8">+62: 8</string>
+    <string name="no_telepon">No. Telepon</string>
+    <string name="your_mail_com">your@mail.com</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="invisible">invisible</string>
+    <string name="cart">Cart</string>
+
+    <string name="pesan">Pesan</string>
+    <string name="ringkasan_pembayaran">Ringkasan Pembayaran</string>
+    <string name="metode_pengiriman">Metode Pengiriman</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="quantity">Quantity</string>
+    <string name="delivery">Delivery</string>
+    <string name="cash">Cash</string>
+    <string name="e_wallet">E-Wallet</string>
+    <string name="take_away">Take Away</string>
+    <string name="login">Login</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="don_t_have_account">Don\'t have account?</string>
+    <string name="et_password">Password</string>
+    <string name="login_user">login_user</string>
+    <string name="sign_up">Sign up</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_password">Your Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="address">Address</string>
+    <string name="your_address">your address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="your_phone">your phone</string>
+    <string name="note">Note</string>
+    <string name="location">Location</string>
+
+    <string name="order_confirmation">Order Confirmation</string>
+    <string name="ok_order">OK</string>
+    <string name="_0">0</string>
+    <string name="total_pesanan">Total Pesanan</string>
+    <string name="empty_cart">empty_cart</string>
+    <string name="logout">Logout</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="pesanan_kamu_sudah_masuk">Pesanan Kamu Sudah Masuk</string>
+    <string name="pembayaran_berhasil">Pembayaran Berhasil</string>
+</resources>

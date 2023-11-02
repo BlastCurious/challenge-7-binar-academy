@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailItem"
+            app:destination="@id/detailItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailItem"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.DetailItemFragment"
+        android:label="fragment_detail_item"
+        tools:layout="@layout/fragment_detail_item" >
+        <argument
+            android:name="nameadd"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Data can't empty" />
+        <argument
+            android:name="priceadd"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="imageadd"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_detailItem_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_confirmOrderFragment"
+            app:destination="@id/confirmOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmOrderFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.ConfirmOrderFragment"
+        android:label="ConfirmOrderFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

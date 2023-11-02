@@ -1,0 +1,29 @@
+  {
+  "project_info": {
+    "project_number": "170416425977",
+    "project_id": "binar-challenge-4496e",
+    "storage_bucket": "binar-challenge-4496e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170416425977:android:9406a14c867f58ffaacb28",
+        "android_client_info": {
+          "package_name": "com.example.challenge_4_ilyasa_adam_naufal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZIGLgQWH9jkNO45Wboztb-tZGXB90jYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

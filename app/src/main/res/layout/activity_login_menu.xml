@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginMenu">
+
+    <ImageView
+        android:id="@+id/img_acc"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/baseline_account_circle_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/login" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/email_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/img_acc"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_email_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/your_email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/material_dynamic_tertiary60"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_login"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/pass_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/et_email_login"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_pw_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:drawableEnd="@drawable/baseline_remove_red_eye_24"
+        android:hint="@string/et_password"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/material_dynamic_tertiary60"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pass_login"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:enabled="true"
+        android:text="@string/login"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_pw_login"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_donthaveacc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/don_t_have_account"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        app:layout_constraintStart_toEndOf="@id/tv_donthaveacc"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
