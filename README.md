@@ -1,1 +1,1 @@
-API punya mas kevin LIMIT
+Semoga lancar
