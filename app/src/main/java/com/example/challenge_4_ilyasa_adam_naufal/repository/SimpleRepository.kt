@@ -22,8 +22,8 @@ class SimpleRepository(private val cartDao: CartDao) {
 	private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
 
 	// API
-	fun getCategory() = apiService.getCategoryMenu()
-	fun getList() = apiService.getListMenu()
+	suspend	fun getCategory() = apiService.getCategoryMenu()
+	suspend fun getList() = apiService.getListMenu()
 
 	// Cart
 	private val _totalPrice = MutableLiveData<Int?>()

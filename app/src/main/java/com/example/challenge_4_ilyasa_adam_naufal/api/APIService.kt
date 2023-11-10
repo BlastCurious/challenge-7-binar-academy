@@ -11,10 +11,10 @@ import retrofit2.http.POST
 
 interface APIService {
 	@GET("listmenu")
-	fun getListMenu(): ListMenu
+	suspend fun getListMenu(): ListMenu
 
 	@GET("category-menu")
-	fun getCategoryMenu(): CategoryMenu
+	suspend fun getCategoryMenu(): CategoryMenu
 
 	@POST("order-menu")
 	fun postOrder(@Body orderData: OrderRequest): Call<OrderResponse>
