@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class DataCategoryMenu(
     @SerializedName("createdAt")
-    val createdAt: String,
+    val createdAt: String?,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("imageUrl")
-    val imageUrl: String,
+    val imageUrl: String?,
     @SerializedName("nama")
-    val nama: String,
+    val nama: String?,
     @SerializedName("updatedAt")
-    val updatedAt: String
+    val updatedAt: String?
 )

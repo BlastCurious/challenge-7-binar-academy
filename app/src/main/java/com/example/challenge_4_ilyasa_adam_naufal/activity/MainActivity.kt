@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.challenge_4_ilyasa_adam_naufal.R
-import com.example.challenge_4_ilyasa_adam_naufal.SharedPreferences
+import com.example.challenge_4_ilyasa_adam_naufal.util.SharedPreferences
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

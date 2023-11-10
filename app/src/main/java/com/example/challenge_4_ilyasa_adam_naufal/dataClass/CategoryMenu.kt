@@ -7,7 +7,7 @@ data class CategoryMenu(
 	@SerializedName("data")
     val `data`: List<DataCategoryMenu>,
 	@SerializedName("message")
-    val message: String,
+    val message: String?,
 	@SerializedName("status")
-    val status: Boolean
+    val status: Boolean?
 )

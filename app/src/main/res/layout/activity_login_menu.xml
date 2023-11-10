@@ -33,7 +33,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_email_login"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
@@ -59,7 +59,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_pw_login"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"

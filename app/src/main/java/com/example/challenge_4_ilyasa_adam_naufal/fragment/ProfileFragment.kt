@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View? {
+	): View {
 		_binding = FragmentProfileBinding.inflate(inflater, container, false)
 
 		firebaseAuth = Firebase.auth
@@ -35,11 +35,11 @@ class ProfileFragment : Fragment() {
 	}
 
 	private fun getProfile() {
-		val _auth = FirebaseAuth.getInstance()
-		val _userAuth = _auth.currentUser
+		val auth = FirebaseAuth.getInstance()
+		val userAuth = auth.currentUser
 
-		binding.tvEmail.text = _userAuth?.email
-		binding.tvMobileProfile.text = _userAuth?.phoneNumber
+		binding.tvEmail.text = userAuth?.email
+		binding.tvMobileProfile.text = userAuth?.phoneNumber
 
 	}
 

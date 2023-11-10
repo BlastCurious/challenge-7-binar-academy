@@ -8,21 +8,21 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class DataListMenu(
     @SerializedName("alamatResto")
-    val alamatResto: String,
+    val alamatResto: String?,
     @SerializedName("createdAt")
-    val createdAt: String,
+    val createdAt: String?,
     @SerializedName("detail")
-    val detail: String,
+    val detail: String?,
     @SerializedName("harga")
-    val harga: Int,
+    val harga: Int?,
     @SerializedName("hargaFormat")
-    val hargaFormat: String,
+    val hargaFormat: String?,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("imageUrl")
-    val imageUrl: String,
+    val imageUrl: String?,
     @SerializedName("nama")
-    val nama: String,
+    val nama: String?,
     @SerializedName("updatedAt")
-    val updatedAt: String
+    val updatedAt: String?
 ) : Parcelable

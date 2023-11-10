@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal
+package com.example.challenge_4_ilyasa_adam_naufal.util
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase

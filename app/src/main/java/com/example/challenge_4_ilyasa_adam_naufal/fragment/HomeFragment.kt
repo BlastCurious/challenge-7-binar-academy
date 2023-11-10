@@ -1,12 +1,10 @@
 package com.example.challenge_4_ilyasa_adam_naufal.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -14,17 +12,19 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_4_ilyasa_adam_naufal.R
-import com.example.challenge_4_ilyasa_adam_naufal.SharedPreferences
 import com.example.challenge_4_ilyasa_adam_naufal.adapter.CategoryAdapter
 import com.example.challenge_4_ilyasa_adam_naufal.adapter.MenuAdapter
-import com.example.challenge_4_ilyasa_adam_naufal.api.APIClient
 import com.example.challenge_4_ilyasa_adam_naufal.dataClass.CategoryMenu
 import com.example.challenge_4_ilyasa_adam_naufal.dataClass.DataListMenu
 import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ListMenu
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentHomeBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.challenge_4_ilyasa_adam_naufal.util.SharedPreferences
+import com.example.challenge_4_ilyasa_adam_naufal.util.Status
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.SimpleViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
 
@@ -33,12 +33,23 @@ class HomeFragment : Fragment() {
 
 	private var isGrid = true
 
+	private lateinit var firebaseAuth: FirebaseAuth
+
+	private val viewModel: SimpleViewModel by inject()
+
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View {
+	): View? {
 		// Inflate the layout for this fragment
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+
+		firebaseAuth = Firebase.auth
+		val currentUser = firebaseAuth.currentUser
+		if (currentUser != null) {
+			"Hai, ${currentUser.email},".also { binding.greeting.text = it }
+		}
 
 		isGrid = SharedPreferences.read("isGrid", true)
 
@@ -56,103 +67,89 @@ class HomeFragment : Fragment() {
 
 	}
 
-	@SuppressLint("NotifyDataSetChanged")
-	private fun showLayout(data: ListMenu) {
+
+	@Suppress("KotlinConstantConditions")
+	private fun showList(data: ListMenu) {
 		if (isGrid) {
-			showGridLayout(data)
+			val adapter = MenuAdapter(isGrid, object : MenuAdapter.OnClickListener {
+				override fun onClickItem(data: DataListMenu) {
+					navigateAndSendDataToDetail(data)
+				}
+			})
+
+			adapter.submitListMenuResponse(data.data)
+			binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
+			binding.recycleviewVertical.adapter = adapter
+			binding.gridlist.setImageDrawable(
+				ContextCompat.getDrawable(
+					requireActivity(), R.drawable.baseline_view_list_24
+				)
+			)
+
 		} else {
-			showListLayout(data)
+			val adapter = MenuAdapter(isGrid, object : MenuAdapter.OnClickListener {
+				override fun onClickItem(data: DataListMenu) {
+					navigateAndSendDataToDetail(data)
+				}
+			})
+			adapter.submitListMenuResponse(data.data)
+			binding.recycleviewVertical.layoutManager = LinearLayoutManager(requireActivity())
+			binding.recycleviewVertical.adapter = adapter
+
+			binding.gridlist.setImageDrawable(
+				ContextCompat.getDrawable(
+					requireActivity(), R.drawable.baseline_grid_view_24
+				)
+			)
 		}
-
 	}
 
-	private fun showListLayout(data: ListMenu) {
-		val adapter = MenuAdapter(isGrid, object : MenuAdapter.OnClickListener {
-			override fun onClickItem(data: DataListMenu) {
-				navigateAndSendDataToDetail(data)
-			}
-		})
-		adapter.submitListMenuResponse(data.data ?: emptyList())
-		binding.recycleviewVertical.layoutManager = LinearLayoutManager(requireActivity())
-		binding.recycleviewVertical.adapter = adapter
-
-		binding.gridlist.setImageDrawable(
-			ContextCompat.getDrawable(
-				requireActivity(), R.drawable.baseline_grid_view_24
-			)
-		)
-	}
-
-	private fun showGridLayout(data: ListMenu) {
-		val adapter = MenuAdapter(isGrid, object : MenuAdapter.OnClickListener {
-			override fun onClickItem(data: DataListMenu) {
-				navigateAndSendDataToDetail(data)
-			}
-		})
-
-		adapter.submitListMenuResponse(data.data ?: emptyList())
-		binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
-		binding.recycleviewVertical.adapter = adapter
-		binding.gridlist.setImageDrawable(
-			ContextCompat.getDrawable(
-				requireActivity(), R.drawable.baseline_view_list_24
-			)
-		)
-	}
 
 	// RecycleViewCategory
-	private fun showCategory(data: CategoryMenu) {
+	private fun showCategory(data: CategoryMenu?) {
 		val adapter = CategoryAdapter()
 
-		adapter.submitCategoryMenuResponse(data.data ?: emptyList() )
+		adapter.submitCategoryMenu(data?.data ?: emptyList())
 		binding.recycleviewHorizontal.layoutManager =
 			LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
 		binding.recycleviewHorizontal.adapter = adapter
 	}
 
 	private fun fetchListMenu() {
-		APIClient.instance.getListMenu()
-			.enqueue(object : Callback<ListMenu> {
-				override fun onResponse(
-					call: Call<ListMenu>,
-					response: Response<ListMenu>
-				) {
-					val body = response.body()
-					val code = response.code()
-
-					if (code == 200) {
-						showLayout(body!!)
-						binding.progressBar.visibility = View.GONE
-					} else {
-						binding.progressBar.visibility = View.GONE
-					}
-				}
-
-				override fun onFailure(call: Call<ListMenu>, t: Throwable) {
+		viewModel.getAllMenu().observe(viewLifecycleOwner) {
+			when (it.status) {
+				Status.SUCCESS -> {
+					showList(it.data!!)
 					binding.progressBar.visibility = View.GONE
-					Toast.makeText(requireActivity(), "Error: $t", Toast.LENGTH_SHORT).show()
 				}
-			})
+
+				Status.ERROR -> {
+					Log.d("Error", "Error Occured!")
+				}
+
+				Status.LOADING -> {
+					binding.progressBar.visibility = View.VISIBLE
+				}
+			}
+		}
 	}
 
 	private fun fetchCategoryMenu() {
-		APIClient.instance.getCategoryMenu()
-			.enqueue(object : Callback<CategoryMenu> {
-				override fun onResponse(
-					call: Call<CategoryMenu>,
-					response: Response<CategoryMenu>
-				) {
-					val body = response.body()
-
-					if (response.code() == 200) {
-						showCategory(body!!)
-					}
+		viewModel.getAllCategory().observe(viewLifecycleOwner) {
+			when (it.status) {
+				Status.SUCCESS -> {
+					showCategory(it.data!!)
 				}
 
-				override fun onFailure(call: Call<CategoryMenu>, t: Throwable) {
-					Toast.makeText(requireActivity(), "Error: $t", Toast.LENGTH_SHORT).show()
+				Status.ERROR -> {
+					Log.d("Error", "Error Occured!")
 				}
-			})
+
+				Status.LOADING -> {
+					binding.progressBar.visibility = View.VISIBLE
+				}
+			}
+		}
 	}
 
 	private fun navigateAndSendDataToDetail(data: DataListMenu) {

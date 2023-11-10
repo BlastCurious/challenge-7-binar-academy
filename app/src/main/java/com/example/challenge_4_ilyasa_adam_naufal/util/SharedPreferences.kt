@@ -1,9 +1,7 @@
-package com.example.challenge_4_ilyasa_adam_naufal
+package com.example.challenge_4_ilyasa_adam_naufal.util
 
 import android.content.Context
 import android.content.SharedPreferences
-
-import androidx.core.content.edit
 
 
 object SharedPreferences {

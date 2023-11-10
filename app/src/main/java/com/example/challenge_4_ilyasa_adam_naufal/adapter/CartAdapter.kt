@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.challenge_4_ilyasa_adam_naufal.database.cart.Cart
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ItemCartBinding
-import com.example.challenge_4_ilyasa_adam_naufal.viewModel.CartViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.SimpleViewModel
 
 class CartAdapter(
-	private val cartViewModel: CartViewModel,
+	private val viewModel: SimpleViewModel,
 	private val cfmOrder: Boolean
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
@@ -29,14 +29,14 @@ class CartAdapter(
 	override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
 		val currentItem = cartItems[position]
 
-		holder.bind(currentItem, viewModel = cartViewModel, cfmOrder)
+		holder.bind(currentItem, viewModel = viewModel, cfmOrder)
 
 	}
 
 	class CartViewHolder(private val binding: ItemCartBinding) :
 		RecyclerView.ViewHolder(binding.root) {
 
-		fun bind(cartItem: Cart, viewModel: CartViewModel, cfmOrder: Boolean) {
+		fun bind(cartItem: Cart, viewModel: SimpleViewModel, cfmOrder: Boolean) {
 
 			if (cfmOrder) {
 				binding.delete.visibility = View.GONE
@@ -64,7 +64,7 @@ class CartAdapter(
 					.into(binding.image)
 			}
 			binding.delete.setOnClickListener {
-				viewModel.deleteItemCart(cartItem.id)
+				viewModel.deleteitemById(cartItem.id)
 			}
 
 			binding.btnreduce.setOnClickListener {

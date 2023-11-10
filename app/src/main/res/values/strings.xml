@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">challenge_4_ilyasa_adam_naufal</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hai_ilyasa">Hai, Ilyasa</string>
     <string name="discount_picture">DISCOUNT PICTURE</string>
     <string name="promo_banner">PROMO BANNER</string>
@@ -20,7 +19,6 @@
     <string name="your_mail_com">your@mail.com</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="invisible">invisible</string>
     <string name="cart">Cart</string>
 
     <string name="pesan">Pesan</string>
@@ -34,10 +32,8 @@
     <string name="e_wallet">E-Wallet</string>
     <string name="take_away">Take Away</string>
     <string name="login">Login</string>
-    <string name="forgot_your_password">Forgot your password?</string>
     <string name="don_t_have_account">Don\'t have account?</string>
     <string name="et_password">Password</string>
-    <string name="login_user">login_user</string>
     <string name="sign_up">Sign up</string>
     <string name="your_email">Your Email</string>
     <string name="your_password">Your Password</string>
@@ -49,8 +45,6 @@
     <string name="note">Note</string>
     <string name="location">Location</string>
 
-    <string name="order_confirmation">Order Confirmation</string>
-    <string name="ok_order">OK</string>
     <string name="_0">0</string>
     <string name="total_pesanan">Total Pesanan</string>
     <string name="empty_cart">empty_cart</string>
@@ -58,4 +52,11 @@
     <string name="back_to_home">Back to Home</string>
     <string name="pesanan_kamu_sudah_masuk">Pesanan Kamu Sudah Masuk</string>
     <string name="pembayaran_berhasil">Pembayaran Berhasil</string>
+    <string name="tambahkan_ke_keranjang">Tambahkan ke Keranjang</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="harga_item">Harga Item</string>
+    <string name="nama_item">Nama Item</string>
+    <string name="home">Home</string>
+    <string name="_1">1</string>
+    <string name="rp">Rp</string>
 </resources>

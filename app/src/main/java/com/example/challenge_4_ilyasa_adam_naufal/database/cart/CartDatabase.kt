@@ -1,12 +1,9 @@
 package com.example.challenge_4_ilyasa_adam_naufal.database.cart
 
 import android.content.Context
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import com.example.challenge_4_ilyasa_adam_naufal.MigrationDB
 
 @Database(
 	entities = [Cart::class], version = 2)

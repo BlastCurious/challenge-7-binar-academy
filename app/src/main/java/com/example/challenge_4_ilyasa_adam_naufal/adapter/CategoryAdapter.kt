@@ -26,7 +26,7 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 	private val differ = AsyncListDiffer(this, diffCallBack)
 
-	fun submitCategoryMenuResponse(value: List<DataCategoryMenu>) = differ.submitList(value)
+	fun submitCategoryMenu(value: List<DataCategoryMenu>) = differ.submitList(value)
 
 	// Membuat Holder
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder {
