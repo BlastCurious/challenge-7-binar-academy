@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ActivityLoginMenuBinding
+import com.example.challenge_4_ilyasa_adam_naufal.util.AuthVerification
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -22,7 +23,18 @@ class LoginMenu : AppCompatActivity() {
 		firebaseAuth = Firebase.auth
 
 		binding.btnLogin.setOnClickListener {
+			val emailVerif = AuthVerification.emailVerif(binding.etEmailLogin.text.toString())
+			val pwVerif = AuthVerification.pwVerif(binding.etPwLogin.text.toString())
+
+			if (!emailVerif&& !pwVerif) {
+				Toast.makeText(this, "Email and password not valid!", Toast.LENGTH_SHORT).show()
+			} else if (!emailVerif) {
+				Toast.makeText(this, "Email not valid!", Toast.LENGTH_SHORT).show()
+			} else if (!pwVerif) {
+				Toast.makeText(this, "Password can't be empty!", Toast.LENGTH_SHORT).show()
+			} else {
 			login(binding.etEmailLogin.text.toString(), binding.etPwLogin.text.toString())
+			}
 		}
 
 		binding.tvSignup.setOnClickListener {

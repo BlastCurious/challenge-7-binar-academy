@@ -30,13 +30,28 @@ android {
 	}
 
 	buildTypes {
-		release {
+		getByName("release") {
 			isMinifyEnabled = false
 			proguardFiles(
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
 			)
 		}
+		create("staging") {
+			buildConfigField(
+				"STRING_FIELD_NAME",
+				"BASE_URL",
+				"https://testing.jasa-nikah-siri-amanah-profesional.com"
+			)
+		}
+		create("demo") {
+			buildConfigField(
+				"STRING_FIELD_NAME",
+				"BASE_URL",
+				"https://testing.jasa-nikah-siri-amanah-profesional.com"
+			)
+		}
+
 	}
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_1_8
@@ -48,6 +63,7 @@ android {
 
 	buildFeatures {
 		viewBinding = true
+		buildConfig = true
 	}
 }
 
@@ -80,6 +96,10 @@ dependencies {
 	implementation("androidx.room:room-runtime:2.6.0")
 	implementation("androidx.room:room-ktx:2.6.0")
 	implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+	implementation("androidx.test.ext:junit-ktx:1.1.5")
+	testImplementation("junit:junit:4.13.2")
+	testImplementation("junit:junit:4.13.2")
+	testImplementation("junit:junit:4.13.2")
 	annotationProcessor("androidx.room:room-compiler:2.6.0")
 	kapt("androidx.room:room-compiler:2.6.0")
 
@@ -94,8 +114,8 @@ dependencies {
 	//Firebase
 	implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 	implementation("com.google.firebase:firebase-analytics-ktx:21.5.0")
-	implementation("com.google.firebase:firebase-crashlytics-ktx:18.5.1")
-	implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
+	implementation("com.google.firebase:firebase-crashlytics-ktx:18.6.0")
+	implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
 	implementation("com.google.firebase:firebase-database-ktx:20.3.0")
 	implementation("com.google.firebase:firebase-firestore:24.9.1")
 
@@ -106,8 +126,13 @@ dependencies {
 	implementation("io.insert-koin:koin-androidx-workmanager:3.3.0")
 	implementation("io.insert-koin:koin-androidx-navigation:3.3.0")
 
-	testImplementation("junit:junit:4.13.2")
-	androidTestImplementation("androidx.test.ext:junit:1.1.5")
-	androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+	// Testing
+	androidTestImplementation("com.google.truth:truth:1.1.5")
+	androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
+	testImplementation("com.google.truth:truth:1.1.5")
+	testImplementation("androidx.arch.core:core-testing:2.2.0")
+	testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+	testImplementation("org.mockito:mockito-junit-jupiter:5.5.0")
+	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
 }
